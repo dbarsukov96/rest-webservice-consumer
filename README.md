@@ -1,17 +1,5 @@
-# REST Web Service
-## This service provides API for simple CRUD operation for contact resource.
-### API has following endpoints:
-```
-/contacts (GET, POST)
-/contacts?name={someName} (GET)
-/contacts?phoneNumber={somePhoneNumber} (GET)
-/contacts/{id} (GET, PUT, DELETE)
-/contacts/{id}/messgae (POST)
-```
-### You also can check Swagger Documentation here:
-```
-/swagger-ui.html
-```
+# Client MVC application
+## This application consume REST Web Service to get contacts and make simple CRUD operation on them
 
-### This Web Service hosted on AWS using EC2 instance (Ubuntu) and RDS (PostgreSQL)
-[Link to the API](http://ec2-35-180-41-25.eu-west-3.compute.amazonaws.com:8090/contacts)
+### This MVC application hosted on AWS using EC2 instance (Ubuntu)
+[Link to the application](http://ec2-35-180-41-25.eu-west-3.compute.amazonaws.com:8080/contacts)
