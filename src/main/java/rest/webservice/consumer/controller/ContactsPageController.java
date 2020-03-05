@@ -25,7 +25,7 @@ public class ContactsPageController {
         return "contacts";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("{id}/edit")
     public String openEditPage(@PathVariable Long id, Model model) {
         // TODO: Exception handling
         Contact contact = contactsService.getContactById(id);
@@ -33,7 +33,7 @@ public class ContactsPageController {
         return "edit-page";
     }
 
-    @PostMapping("/edit/{id}")
+    @PostMapping("{id}/edit")
     public String updateContact(Contact contact, Model model) {
         // TODO: Add validation and exception handling
         contactsService.updateContact(contact);
@@ -52,7 +52,7 @@ public class ContactsPageController {
         return "redirect:/contacts";
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("{id}/delete")
     public String deleteContact(@PathVariable Long id) {
         // TODO: Exception handling
         contactsService.deleteContact(id);
