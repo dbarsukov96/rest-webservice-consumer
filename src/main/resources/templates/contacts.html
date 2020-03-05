@@ -11,29 +11,31 @@
     <title>Contacts</title>
 </head>
 <body>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Phone Number</th>
-                <th scope="col">Send Message</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="contact : ${contacts}">
-                <th th:text="${contact.id}"></th>
-                <td th:text="${contact.name}"></td>
-                <td th:text="${contact.phoneNumber}"></td>
-                <td><a th:href="@{/contacts/send/{id}(id=${contact.id})}"><i class="fa fa-pencil"/></a></td>
-                <td><a th:href="@{/contacts/edit/{id}(id=${contact.id})}"><i class="fa fa-pencil"/></a></td>
-                <td><a th:href="@{/contacts/delete/{id}(id=${contact.id})}"><i class="fa fa-trash"/></a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a th:href="@{/contacts/create}" class="btn btn-primary mt-5">Add new contact</a>
+    <div class="card m-3">
+        <h5 class="card-header">Contact Book</h5>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="contact : ${contacts}">
+                    <th th:text="${contact.id}"></th>
+                    <td th:text="${contact.name}"></td>
+                    <td th:text="${contact.phoneNumber}"></td>
+                    <td><a th:href="@{/contacts/{id}/edit(id=${contact.id})}"><i class="fa fa-pencil"/></a></td>
+                    <td><a th:href="@{/contacts/{id}/delete(id=${contact.id})}"><i class="fa fa-trash"/></a></td>
+                </tr>
+                </tbody>
+            </table>
+            <a th:href="@{/contacts/create}" class="btn btn-primary mt-3">Add new contact</a>
+        </div>
+    </div>
 </body>
 </html>

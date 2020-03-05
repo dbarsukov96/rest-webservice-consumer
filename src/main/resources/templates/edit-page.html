@@ -10,19 +10,24 @@
     <title>Edit Contact</title>
 </head>
 <body>
-    <form method="post" th:action="@{/contacts/edit/{id}(id=${contact.id})}" th:object="${contact}">
-        <input type="hidden" name="id" th:value="${contact.id}"/>
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" th:value="${contact.name}"/>
-            <small id="nameHelp" class="form-text text-muted">Required field *</small>
+    <div class="card m-5">
+        <h5 class="card-header">Edit Contact</h5>
+        <div class="card-body">
+            <form method="post" th:action="@{/contacts/{id}/edit(id=${contact.id})}" th:object="${contact}">
+                <input type="hidden" name="id" th:value="${contact.id}"/>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" th:value="${contact.name}"/>
+                    <small id="nameHelp" class="form-text text-muted">Required field *</small>
+                </div>
+                <div class="form-group">
+                    <label for="number">Phone Number</label>
+                    <input type="number" class="form-control" id="number" name="phoneNumber" th:value="${contact.phoneNumber}"/>
+                    <small id="numberHelp" class="form-text text-muted">Required field *</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="number">Phone Number</label>
-            <input type="number" class="form-control" id="number" name="phoneNumber" th:value="${contact.phoneNumber}"/>
-            <small id="numberHelp" class="form-text text-muted">Required field *</small>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 </body>
 </html>
