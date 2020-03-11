@@ -14,12 +14,17 @@
     <div class="card m-3">
         <h5 class="card-header">Contact Book</h5>
         <div class="card-body">
-            <table class="table table-striped">
+            <form method="post" th:action="@{/contacts/search}">
+                <input type="text" class="form-control" id="search" name="search" placeholder="Enter contact name..."/>
+            </form>
+
+            <table class="table table-striped mt-3">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Phone Number</th>
+                    <th scope="col">Send Message</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -29,12 +34,13 @@
                     <th th:text="${contact.id}"></th>
                     <td th:text="${contact.name}"></td>
                     <td th:text="${contact.phoneNumber}"></td>
+                    <td><a th:href="@{/contacts/{id}/message(id=${contact.id})}"><i class="fa fa-pencil"/></a></td>
                     <td><a th:href="@{/contacts/{id}/edit(id=${contact.id})}"><i class="fa fa-pencil"/></a></td>
                     <td><a th:href="@{/contacts/{id}/delete(id=${contact.id})}"><i class="fa fa-trash"/></a></td>
                 </tr>
                 </tbody>
             </table>
-            <a th:href="@{/contacts/create}" class="btn btn-primary mt-3">Add new contact</a>
+            <a th:href="@{/contacts/create}" class="btn btn-primary">Add new contact</a>
         </div>
     </div>
 </body>

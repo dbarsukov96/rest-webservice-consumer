@@ -25,6 +25,13 @@ public class ContactsService {
         return mapToContact(contactsExchangeClient.getContactById(id));
     }
 
+    public List<Contact> findAllByName(String name) {
+        return contactsExchangeClient.getContactsByName(name)
+                .stream()
+                .map(this::mapToContact)
+                .collect(Collectors.toList());
+    }
+
     public void createContact(Contact contact) {
         contactsExchangeClient.createContact(mapToContactDto(contact));
     }
@@ -38,6 +45,10 @@ public class ContactsService {
 
     public void deleteContact(Long id) {
         contactsExchangeClient.deleteContact(id);
+    }
+
+    public void sendMessage(Long id, String message) {
+        contactsExchangeClient.sendMessage(id, message);
     }
 
     private Contact mapToContact(@NonNull ContactDto contactDto) {
