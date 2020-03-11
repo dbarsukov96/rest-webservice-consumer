@@ -58,4 +58,20 @@ public class ContactsPageController {
         model.addAttribute("contacts", contacts);
         return "contacts";
     }
+
+    @GetMapping("{id}/message")
+    public String openMessagingPage(@PathVariable Long id, Model model) {
+        Contact contact = contactsService.getContactById(id);
+        model.addAttribute("contact", contact);
+        return "message-page";
+    }
+
+    @PostMapping("{id}/message")
+    public String sendMessage(
+            @PathVariable Long id,
+            @RequestParam String message,
+            Model model) {
+        contactsService.sendMessage(id, message);
+        return "redirect:/contacts";
+    }
 }
