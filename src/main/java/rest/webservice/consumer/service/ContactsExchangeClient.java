@@ -17,7 +17,7 @@ import java.util.List;
 @Component
 public class ContactsExchangeClient {
     private RestTemplate restTemplate = new RestTemplate();
-    private String url = "http://localhost:8090/";
+    private String url = "http://ec2-35-180-41-25.eu-west-3.compute.amazonaws.com:8090/";
 
     public List<ContactDto> getContacts() {
         String endpoint = url + "/contacts";
