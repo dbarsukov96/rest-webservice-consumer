@@ -47,6 +47,10 @@ public class ContactsService {
         contactsExchangeClient.deleteContact(id);
     }
 
+    public void sendMessage(Long id, String message) {
+        contactsExchangeClient.sendMessage(id, message);
+    }
+
     private Contact mapToContact(@NonNull ContactDto contactDto) {
         return new Contact(
                 contactDto.getId(),

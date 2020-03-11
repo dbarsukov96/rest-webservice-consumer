@@ -6,16 +6,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import rest.webservice.consumer.domain.ContactDto;
+import rest.webservice.consumer.domain.MessageDto;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Component
 public class ContactsExchangeClient {
     private RestTemplate restTemplate = new RestTemplate();
-    private String url = "http://localhost:8090/";
+    private String url = "http://ec2-35-180-41-25.eu-west-3.compute.amazonaws.com:8090";
 
     public List<ContactDto> getContacts() {
         String endpoint = url + "/contacts";
@@ -93,6 +95,19 @@ public class ContactsExchangeClient {
                 HttpMethod.DELETE,
                 request,
                 ContactDto.class
+        );
+    }
+
+    public void sendMessage(Long id, String message) {
+        String endpoint = url + "/contacts/" + id + "/message";
+
+        MessageDto messageDto = new MessageDto(new Date(), message);
+        HttpEntity<MessageDto> request = new HttpEntity<>(messageDto);
+        ResponseEntity<?> response = restTemplate.exchange(
+                endpoint,
+                HttpMethod.POST,
+                request,
+                MessageDto.class
         );
     }
 }
