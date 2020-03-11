@@ -14,7 +14,11 @@
     <div class="card m-3">
         <h5 class="card-header">Contact Book</h5>
         <div class="card-body">
-            <table class="table table-striped">
+            <form method="post" th:action="@{/contacts/search}">
+                <input type="text" class="form-control" id="search" name="search" placeholder="Enter contact name..."/>
+            </form>
+
+            <table class="table table-striped mt-3">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -34,7 +38,7 @@
                 </tr>
                 </tbody>
             </table>
-            <a th:href="@{/contacts/create}" class="btn btn-primary mt-3">Add new contact</a>
+            <a th:href="@{/contacts/create}" class="btn btn-primary">Add new contact</a>
         </div>
     </div>
 </body>

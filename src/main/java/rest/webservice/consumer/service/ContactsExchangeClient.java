@@ -15,7 +15,7 @@ import java.util.List;
 @Component
 public class ContactsExchangeClient {
     private RestTemplate restTemplate = new RestTemplate();
-    private String url = "http://ec2-35-180-41-25.eu-west-3.compute.amazonaws.com:8090/";
+    private String url = "http://localhost:8090/";
 
     public List<ContactDto> getContacts() {
         String endpoint = url + "/contacts";
@@ -41,6 +41,19 @@ public class ContactsExchangeClient {
         }
 
         return  contactDto;
+    }
+
+    public List<ContactDto> getContactsByName(String name) {
+        String endpoint = url + "/contacts?name=" + name;
+
+        ContactDto[] contactsDto = null;
+        try {
+            contactsDto = restTemplate.getForObject(new URI(endpoint), ContactDto[].class);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        return Arrays.asList(contactsDto);
     }
 
     public void createContact(ContactDto contactDto) {

@@ -25,6 +25,13 @@ public class ContactsService {
         return mapToContact(contactsExchangeClient.getContactById(id));
     }
 
+    public List<Contact> findAllByName(String name) {
+        return contactsExchangeClient.getContactsByName(name)
+                .stream()
+                .map(this::mapToContact)
+                .collect(Collectors.toList());
+    }
+
     public void createContact(Contact contact) {
         contactsExchangeClient.createContact(mapToContactDto(contact));
     }
